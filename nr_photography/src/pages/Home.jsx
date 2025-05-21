@@ -1,8 +1,10 @@
 import React from 'react';
-import {Helmet} from 'react-helmet'
+import { Helmet } from 'react-helmet'
+import { Link } from 'react-router-dom';
 import BookingForm from '../components/BookingForm';
 import '../style/home.css'
 import heroImage from '../assets/hero.jpg';
+import Portfolio from './Portfolio';
 
 const Home = () => {
   return (
@@ -19,10 +21,10 @@ const Home = () => {
       <div className='aperture-blades'></div>
     </div>
     <p>Capturing Life's Precious Moments</p>
-    <button className='cta-button'>
+    {/* <Link className='cta-button'>
       <span className='shutter-icon'></span>
       View Portfolio
-    </button>
+    </Link> */}
   </div>
   <div className='hero-image'>
     <div className='film-strip-overlay'></div>

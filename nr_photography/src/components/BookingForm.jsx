@@ -40,7 +40,7 @@ const BookingForm = () => {
         📅 *Date:* ${formData.date}%0A
         💬 *Message:* ${formData.message}`;
 
-      window.open(`https://wa.me/911234567890?text=${whatsappMessage}`, '_blank');
+      window.open(`https://wa.me/919390228526?text=${whatsappMessage}`, '_blank');
 
       
       await sendForm(
