@@ -7,7 +7,7 @@ const BookingForm = () => {
     name: '',
     email: '',
     phone: '',
-    service: '',
+    service: '', 
     date: '',
     message: ''
   });
@@ -33,14 +33,14 @@ const BookingForm = () => {
       };
 
       const whatsappMessage = `*New Booking Request*%0A%0A
-        🧑‍💼 *Name:* ${formData.name}%0A
-        📧 *Email:* ${formData.email}%0A
-        📱 *Phone:* ${formData.phone}%0A
-        🔧 *Service:* ${services[formData.service]}%0A
-        📅 *Date:* ${formData.date}%0A
-        💬 *Message:* ${formData.message}`;
+      🧑‍💼 *Name:* ${formData.name}%0A
+      📧 *Email:* ${formData.email}%0A
+      📱 *Phone:* ${formData.phone}%0A
+      🔧 *Service:* ${services[formData.service]}%0A
+      📅 *Date:* ${formData.date}%0A
+      💬 *Message:* ${formData.message}`;
 
-      window.open(`https://wa.me/919390228526?text=${whatsappMessage}`, '_blank');
+    window.open(`https://wa.me/919390228526?text=${whatsappMessage}`, '_blank');
 
       
       await sendForm(
@@ -49,9 +49,6 @@ const BookingForm = () => {
         e.target,
         process.env.REACT_APP_EMAILJS_PUBLIC_KEY
       );
-
-      alert('Booking submitted! Check your email for confirmation.');
-      
       
       setFormData({
         name: '',
