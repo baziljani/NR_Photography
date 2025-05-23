@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import '../style/portfolio.css'
 
 const portfolioCategories = [
@@ -109,8 +110,8 @@ const Portfolio = () => {
         <div className="container">
           <h2>Ready to Book Your Own Photoshoot?</h2>
           <div className="cta-buttons">
-            <a href="/contact" className="cta-btn">Contact Us</a>
-            <a href="/services" className="cta-btn cta-secondary">View Services</a>
+            <Link to="/contact" className="cta-btn">Contact Us</Link>
+            <Link to="/services" className="cta-btn cta-secondary">View Services</Link>
           </div>
         </div>
       </section>
