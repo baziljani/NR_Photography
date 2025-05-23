@@ -6,7 +6,14 @@
     position: sticky;
     top: 0;
     z-index: 1000;
+    width: 100%;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }
+header.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0; }
 .container{
     max-width:1200px;
     margin: 0 auto;
@@ -18,6 +25,23 @@
     align-items: center;
     padding: 20px;
 }
+/* Add to your header.css */
+.booking-link {
+    background-color: var(--primary);
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.booking-link:hover {
+    background-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.booking-link.active {
+    background-color: var(--accent);
+    box-shadow: 0 0 0 2px white; }
 
 
 .logo img {

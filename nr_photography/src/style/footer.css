@@ -1,167 +1,274 @@
-:root {
-    --primary: #ff6b6b;
-    --secondary: #f06595;
-    --dark: #1a1a1a;
-}
-
+/* Base Footer Styles */
 .footer {
-    background: linear-gradient(135deg, var(--dark), #000);
-    color: #fff;
-    padding: 60px 20px 30px;
+    background: linear-gradient(135deg, #1a1a1a, #000);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 4rem 2rem 2rem;
     position: relative;
-    overflow: hidden;
+    border-top: 3px solid #d4af37;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
 .footer::before {
     content: '';
     position: absolute;
-    top: -2px;
+    top: 0;
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background: linear-gradient(90deg, #d4af37, #b8860b);
+    /* Gold to dark gradient */
 }
 
+/* Container and Layout */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    
 }
 
 .footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
-    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 3rem;
 }
 
 .footer-section {
-    flex: 1 1 250px;
+    padding: 1rem;
+    position: relative;
 }
 
+/* Section Headings with Gold Underline */
 .footer-section h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #d4af37;
     position: relative;
-    display: inline-block;
+    padding-bottom: 0.5rem; 
 }
 
 .footer-section h3::after {
     content: '';
     position: absolute;
-    bottom: -8px;
+    bottom: 0;
     left: 0;
     width: 40px;
     height: 3px;
-    background: var(--primary);
+    background: #d4af37;
+    /* Gold */
 }
 
-.footer-section ul {
+/* Brand Section Styling */
+.brand-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+.brand-header h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin: 0; 
+}
+
+.brand-icon {
+    font-size: 2.2rem;
+    color: #d4af37;
+    /* Gold */
+}
+
+.brand-tagline {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem; 
+}
+
+.awards-badge {
+    background: rgba(212, 175, 55, 0.1);
+    color: #d4af37;
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 0.85rem;
+    border: 1px solid rgba(212, 175, 55, 0.3); 
+}
+
+/* Navigation Links */
+.footer-nav {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-.footer-section ul li {
-    margin-bottom: 10px;
+.footer-nav li {
+    margin-bottom: 0.8rem;
 }
 
-.footer-section ul li a {
-    color: #fff;
+.footer-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    display: block;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+.footer-nav a,
+.footer-nav li {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: block; 
+}
+
+.footer-nav a:hover {
+    color: #d4af37;
+    transform: translate(5px);
+}
+
+/* Newsletter Section */
+.newsletter {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+.newsletter-form {
+    margin: 1.5rem 0; 
+}
+
+.newsletter input {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+.newsletter-form input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    margin-bottom: 0.8rem; }
+
+.subscribe-btn {
+    background: #d4af37;
+    color: #1a1a1a;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+.subscribe-btn:hover {
+    background: #c19b2e;
+    transform: translateY(-2px);     
+}
+
+/* Social Icons - Original Colors with Hover Effects */
+.social-links {
+    display: flex;
+    gap: 1.2rem;
+    margin: 1.5rem 0;
+}
+
+/* .social-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s, opacity 0.3s;
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+}
+    /* Only the icon color will show */
+.fa-instagram {
+    color: #E1306C !important;
+    background: none !important;
+}
+
+.fa-facebook {
+    color: #1877F2 !important;
+    background: none !important;
+}
+
+.fa-youtube {
+    color: #FF0000 !important;
+    background: none !important;
+}
+
+/* .social-icon:hover {
+    transform: translateY(-3px) scale(1.08);
+    opacity: 0.8;
+    filter: brightness(1.1);
+    
+} */
+
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem; 
+}
+
+.footer-bottom p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.legal-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+}
+
+.legal-links a {
+    color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     transition: color 0.3s;
 }
 
-.footer-section ul li a:hover {
-    color: var(--primary);
-}
-
-
-.social-links a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-    margin-right: 15px;
-    font-size: 20px;
-}
-
-.social-links a.instagram i {
-    color: #E1306C;
+.legal-links a:hover {
+    color: #d4af37;
    
 }
 
-.social-links a.facebook i {
-    color: #1877F2;
-   
-}
-
-.social-links a.youtube i {
-    color: #FF0000;
-   
-}
-
-.social-links a:hover {
-    background: var(--primary);
-    transform: translateY(-3px);
-}
-
-.social-links a {
-    display: inline-block;
-    margin-right: 15px;
-    color: #fff;
-    font-size: 1.2rem;
-    transition: transform 0.3s, color 0.3s;
-}
-
-.social-links a:hover {
-    color: var(--primary);
-    transform: scale(1.2);
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid #444;
-    font-size: 0.9rem;
-}
 
 @media (min-width: 768px) {
     .footer {
         padding: 4rem 2rem;
     }
-
+    
     .footer-section {
-        text-align: left;
+        text-align: center;
     }
 
-    .social-icons {
-        justify-content: flex-start;
+    .brand-header {
+        justify-content: center;
+    }
+
+    .newsletter {
+        justify-content: center;
+    }
+
+    .social-links {
+        justify-content: center;
     }
 
     .footer-section h3::after {
-        content: '';
-        display: block;
-        width: 40px;
-        height: 3px;
-        background: var(--primary);
-        margin-top: 0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
-
-.fa-instagram:hover {
-    color: #E1306C !important;
-}
-
-.fa-facebook:hover {
-    color: #1877F2 !important;
-}
-
-.fa-youtube:hover {
-    color: #FF0000 !important;
-}
+@media (max-width: 767px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    } }

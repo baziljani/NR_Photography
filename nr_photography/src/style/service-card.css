@@ -16,14 +16,14 @@
 }
 
 .service-image {
-    height: 220px;
+    height: 180px;
     overflow: hidden;
     position: relative;
 }
 
 .service-image img {
     width: 100%;
-    height: 100%;
+    height: 180;
     object-fit: cover;
     transition: transform 0.8s ease;
 }
@@ -118,6 +118,9 @@
 
 .service-card {
     background: white;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
     border-radius: 15px;
     overflow: hidden;
     transform-style: preserve-3d;

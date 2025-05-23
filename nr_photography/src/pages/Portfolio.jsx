@@ -36,8 +36,16 @@ const Portfolio = () => {
     <div className='portfolio-page'>
       <section className='portfolio-hero'>
         <div className='hero-content'>
-          <h1 data-aos="fade-up">Captured Moments</h1>
-          <p data-aos="fade-up" data-aos-delay="200">Witness Our Visual Storytelling Journey</p>
+          <img 
+            src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80" 
+            alt="Camera Hero" 
+            className="portfolio-hero-img"
+          />
+          <div className="hero-text">
+            <h1 data-aos="fade-up">Captured Moments</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Witness Our Visual Storytelling Journey</p>
+            <p className="hero-highlight">Every click tells a story. Explore our best shots and creative vision.</p>
+          </div>
         </div>
       </section>
 
@@ -96,6 +104,16 @@ const Portfolio = () => {
           </div>
         </div>
       )}
+
+      <section className="portfolio-cta">
+        <div className="container">
+          <h2>Ready to Book Your Own Photoshoot?</h2>
+          <div className="cta-buttons">
+            <a href="/contact" className="cta-btn">Contact Us</a>
+            <a href="/services" className="cta-btn cta-secondary">View Services</a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

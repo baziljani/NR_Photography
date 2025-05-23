@@ -30,38 +30,44 @@ const Contact = () => {
     <div className='contact-page'>
       <section className='contact-hero'>
         <div className='container'>
-          <h1>Contact Us</h1>
-          <p>Get in touch to discuss your photography needs</p>
+          <div className='hero-content'>
+            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=900&q=80" alt="Contact NR Photography" className='contact-hero-img' />
+            <div className='hero-text'>
+              <h1>Contact Us</h1>
+              <p>Let's connect and make your moments unforgettable. Reach out for bookings, collaborations, or any photography inquiries. Our team is here to help you every step of the way.</p>
+              <p className='hero-highlight'>Professional. Creative. Reliable.</p>
+            </div>
+          </div>
         </div>
       </section>
       <section className='contact-content'>
         <div className='container'>
-          <div className='contant-grid'>
+          <div className='contact-grid'>
             <div className='contact-info'>
-              <h2>COntact Information</h2>
+              <h2>Contact Information</h2>
               <div className='info-item'>
-                <h3>Address</h3>
-                <p>123 Photography Street, Studio 45 <br /> New York, NY 10001</p>
+                <h3>Studio Address</h3>
+                <p>123 Photography Street, Studio 45<br />New York, NY 10001</p>
               </div>
               <div className='info-item'>
                 <h3>Phone</h3>
-                <p>+1 (123) 456-7890</p>
+                <a href="tel:+11234567890" className='info-link'>+1 (123) 456-7890</a>
               </div>
               <div className='info-item'>
                 <h3>Email</h3>
-                <p>contact@nrphotography.com</p>
+                <a href="mailto:contact@nrphotography.com" className='info-link'>contact@nrphotography.com</a>
               </div>
               <div className='info-item'>
-                <h3>Social Media</h3>
+                <h3>Follow Us</h3>
                 <div className='social-links'>
-                  <a href="https://instagram.com" target='_blank' rel='noopener noreferrer'>
-                  <i className='fab fa-instagram'></i>
+                  <a href="https://instagram.com" target='_blank' rel='noopener noreferrer' className='social-icon instagram'>
+                    <i className='fab fa-instagram'></i>
                   </a>
-                  <a href="https://facebook.coom" target='_blank' rel='noopener noreferrer'>
-                  <i className='fab fa-facebook'></i>
+                  <a href="https://facebook.com" target='_blank' rel='noopener noreferrer' className='social-icon facebook'>
+                    <i className='fab fa-facebook'></i>
                   </a>
-                  <a href="https://youtube.com" target='_blank' rel='noopener noreferrer'>
-                  <i className='fab fa-youtube'></i>
+                  <a href="https://youtube.com" target='_blank' rel='noopener noreferrer' className='social-icon youtube'>
+                    <i className='fab fa-youtube'></i>
                   </a>
                 </div>
               </div>
@@ -117,7 +123,7 @@ const Contact = () => {
             <h2>Our Location</h2>
             <div className='map'>
               <iframe title='NR Photography Location' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215573291234!2d-73.987844924164!3d40.74844047138971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1623251234567!5m2!1sen!2sus"
-                frameborder="0"
+                frameBorder="0"
                 width="100%"
                 height="450"
                 style={{ border: 0 }}

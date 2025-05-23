@@ -13,13 +13,17 @@
 
 .modal-content {
     background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 800px;
-    width: 90%;
-    max-height: 90vh;
+    padding: 1.2rem 1.2rem 2.2rem 1.2rem;
+    border-radius: 14px;
+    max-width: 420px;
+    width: 99vw;
+    max-height: 80vh;
     overflow-y: auto;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .close-btn {
@@ -35,69 +39,87 @@
 
 .modal-content h2 {
     margin-bottom: 20px;
-    color: #333;
-}
-
-.service-description {
-    margin-bottom: 30px;
-    line-height: 1.8;
-}
-
-.price-section {
-    margin-bottom: 30px;
-}
-
-.price-section h3 {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 5px;
-}
-
-.price {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ff6b6b;
-}
-
-.sample-images h3 {
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.image-grid img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.cta-section {
+    color: #4A6FA5;
+    font-size: 1.3rem;
+    font-weight: 700;
     text-align: center;
 }
 
-.book-now-btn {
-    background-color: #ff6b6b;
+.service-description {
+    margin-bottom: 0.7rem;
+    font-size: 0.82rem;
+    max-height: 40px;
+    overflow-y: auto;
+}
+
+.price-section h3 {
+    font-size: 0.92rem;
+    color: #666;
+    margin-bottom: 2px;
+}
+
+.price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ff6b6b;
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+}
+
+.sample-images h3 {
+    margin-bottom: 7px;
+    color: #333;
+    font-size: 0.92rem;
+}
+
+.image-grid {
+    display: flex;
+    gap: 6px;
+    margin: 0.3rem 0 1rem 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.image-grid img,
+.sample-img-small {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+    margin: 0;
+}
+
+
+.cta-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.book-now-btn, .attractive-btn {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
     color: white;
     border: none;
-    padding: 12px 30px;
-    font-size: 16px;
+    padding: 0.7rem 2rem;
+    font-size: 1rem;
     border-radius: 30px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background 0.3s, box-shadow 0.3s;
+    margin: 0 auto;
+    display: block;
 }
 
-.book-now-btn:hover {
-    background-color: #ff5252; 
+.book-now-btn:hover, .attractive-btn:hover {
+    background: linear-gradient(135deg, #FFA726, #e74c3c);
+    color: #fff;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 32px rgba(231, 76, 60, 0.25);
 }
-
-
 
 .modal-overlay {
     background: rgba(0, 0, 0, 0.9);
@@ -128,19 +150,13 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-.image-grid {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+.price-section {
+    background: #f8f9fa;
+    font-size: 0.95rem;
+    padding: 0.5rem;
+    border-radius: 10px;
 }
 
-.image-grid img {
-    border-radius: 12px;
-    transition: transform 0.3s ease;
-    height: 200px;
-    object-fit: cover;
-}
 
 .image-grid img:hover {
     transform: scale(1.02);
@@ -148,9 +164,9 @@
 }
 
 .book-now-btn {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
     border-radius: 50px;
     transition: all 0.3s ease;
 }
@@ -160,7 +176,56 @@
     box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
 }
 
+.sample-img-small {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 6px 8px 0;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+  border: 2px solid #f1f1f1;
+  transition: transform 0.2s;
+}
+.sample-img-small:hover {
+  transform: scale(1.08);
+  border-color: #e74c3c;
+}
+
+.attractive-btn {
+  background: linear-gradient(135deg, #e74c3c, #FFA726);
+  color: #fff;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(231, 76, 60, 0.15);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  margin: 0 auto;
+  display: block;
+  z-index: 10;
+}
+
+.attractive-btn:hover {
+  background: linear-gradient(135deg, #FFA726, #e74c3c);
+  color: #fff;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(231, 76, 60, 0.25);
+}
+
+/* Ensure modal-content has enough padding at the bottom for the button */
+.modal-content {
+  padding-bottom: 3.5rem;
+}
+
 @media (max-width: 768px) {
+    .services-hero {
+            height: 60vh;   
+        }
+    .hero-content h1 {
+        font-size: 2.5rem;       
+    }
     .services-hero h1 {
         font-size: 2.5rem;
     }
@@ -170,7 +235,12 @@
     }
 
     .modal-content {
-        width: 95%;
-        padding: 1.5rem;
+        width: 99vw;
+        max-width: 99vw;
+        padding: 0.7rem;
+    }
+    .image-grid img, .sample-img-small {
+        width: 36px;
+        height: 36px;
     }
 }

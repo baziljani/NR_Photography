@@ -1,21 +1,95 @@
 .portfolio-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/random/1600x600/?camera');
-    background-size: cover;
-    background-position: center;
-    color: white;
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.7));
+    padding: 4rem 0 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.portfolio-hero-img {
+    width: 340px;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.18);
+    margin-bottom: 0;
+}
+
+.hero-text {
+    max-width: 500px;
+    text-align: left;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-text p {
+    font-size: 1.3rem;
+    color: #f1f1f1;
+    margin-bottom: 0.7rem;
+}
+
+.hero-highlight {
+    color: #FFA726;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.portfolio-cta {
+    background: #f9f9f9;
+    padding: 3rem 0 4rem 0;
     text-align: center;
-    padding: 100px 20px;
 }
 
-.portfolio-hero h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+.portfolio-cta h2 {
+    color: #4A6FA5;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
 }
 
-.portfolio-hero p {
-    font-size: 20px;
-    max-width: 700px;
-    margin: 0 auto;
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.cta-btn {
+    background: #e74c3c;
+    color: #fff;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 16px rgba(231, 76, 60, 0.08);
+}
+
+.cta-btn:hover {
+    background: #FFA726;
+    color: #fff;
+}
+
+.cta-btn.cta-secondary {
+    background: #4A6FA5;
+}
+
+.cta-btn.cta-secondary:hover {
+    background: #2c3e50;
 }
 
 .portfolio-content {
