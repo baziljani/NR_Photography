@@ -278,6 +278,33 @@
     }
 }
 
+@media (max-width: 600px) {
+  .services-section {
+    padding: 2rem 0.5rem;
+    text-align: center;
+  }
+  .services-section h2 {
+    font-size: 1.5rem;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .service-card {
+    padding: 1.2rem 0.7rem;
+    font-size: 0.95rem;
+  }
+  .service-icon {
+    font-size: 1.5rem;
+  }
+  .service-link {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem 0;
+    display: inline-block;
+  }
+}
+
 @media (max-width: 480px) {
     .service-card img {
         height: 120px;

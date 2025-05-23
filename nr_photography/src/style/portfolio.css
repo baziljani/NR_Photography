@@ -444,6 +444,34 @@
     }
 }
 
+@media (max-width: 600px) {
+  .portfolio-hero {
+    min-height: 50vh;
+    padding: 2rem 0.5rem;
+    text-align: center;
+  }
+  .portfolio-hero-title {
+    font-size: 1.5rem;
+  }
+  .portfolio-hero-description {
+    font-size: 1rem;
+    max-width: 98vw;
+    margin: 0 auto;
+  }
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .portfolio-item img {
+    height: 180px;
+    object-fit: cover;
+  }
+  .portfolio-cta .cta-button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem 0;
+  }
+}
 
 @media (hover: none) {
     .portfolio-item:hover {

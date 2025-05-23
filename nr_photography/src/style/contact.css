@@ -407,6 +407,35 @@ iframe {
     }
 }
 
+@media (max-width: 600px) {
+  .contact-hero {
+    min-height: 60vh;
+    padding: 2rem 0.5rem;
+  }
+  .hero-content {
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align: center;
+  }
+  .contact-hero-img {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 1rem auto;
+  }
+  .hero-text {
+    max-width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  .hero-text p {
+    font-size: 1rem;
+    max-width: 98vw;
+  }
+}
+
 @media (hover: none) {
     .info-item:hover {
         transform: none;
