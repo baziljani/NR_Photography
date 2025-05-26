@@ -182,3 +182,39 @@
 .image-grid img:hover {
     transform: scale(1.05);
 }
+
+
+.view-details-btn {
+  background: linear-gradient(135deg, #4A6FA5 60%, #e74c3c 100%);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(74,111,165,0.10);
+  margin-top: auto;
+  align-self: center;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  outline: none;
+  display: inline-block;
+  z-index: 1;
+}
+
+.view-details-btn:hover, .view-details-btn:focus {
+  background: linear-gradient(135deg, #e74c3c 0%, #4A6FA5 100%);
+  color: #fff;
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 32px rgba(74,111,165,0.18);
+}
+
+@media (max-width: 600px) {
+  .view-details-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem 0;
+  }
+}

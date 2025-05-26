@@ -8,6 +8,7 @@ import photographer1 from '../assets/photographer2.png';
 import photographer2 from '../assets/photographer2.png';
 import testimonial1 from '../assets/testmonial1.png';
 import { FaCameraRetro, FaUserFriends, FaBuilding, FaRegCalendarCheck, FaPalette, FaFilm } from 'react-icons/fa';
+import certificateImg from '../assets/certificate.png';
 
 const Home = () => {
   const services = [
@@ -58,6 +59,21 @@ const Home = () => {
       quote: "Best portrait experience I've ever had. The results were worth every penny.",
       author: "Emma Johnson",
       role: "Model"
+    },
+    {
+      quote: "NR Photography made our event unforgettable. Highly recommended!",
+      author: "Priya Singh",
+      role: "Event Client"
+    },
+    {
+      quote: "Creative, reliable, and always on time. The best photography team!",
+      author: "David Lee",
+      role: "Corporate Client"
+    },
+    {
+      quote: "Our family portraits are beautiful. Thank you for your patience and talent!",
+      author: "The Martins",
+      role: "Family Session"
     }
   ];
 
@@ -99,44 +115,47 @@ const Home = () => {
 </section>
 
       <section className='services-section'>
-        <div className='container'>
-          <h2>Our Services</h2>
-          <div className='services-grid'>
-            {services.map((service, index) => (
-              <div className='service-card' key={index}>
-                <div className='service-icon'>{service.icon}</div>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-                <Link to="#booking-section" className='service-link'>Book Now →</Link>
-              </div>
-            ))}
+  <div className='container'>
+    <h2 className='services-title-alt'>Our Services</h2>
+    <div className='services-list-alt'>
+      {services.map((service, index) => (
+        <div className='service-tile' key={index}>
+          <div className='service-icon-large'>{service.icon}</div>
+          <div className='service-info'>
+            <h3 className='service-title-alt'>{service.title}</h3>
+            <p className='service-desc-alt'>{service.description}</p>
+            <div className='service-actions'>
+              <Link to={`/services#${service.title.replace(/\s+/g, '-').toLowerCase()}`} className='service-action-link'>View Details</Link>
+              <Link to='/#booking-section' className='service-action-link book-now'>Book Now</Link>
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
 
       <section className='about-section'>
         <div className='container'>
-          <div className='about-content'>
-            <div className='about-text'>
-              <h2>About <br/> NR PHOTOGRAPHY</h2>
-              <p>Welcome to NR PHOTOGRAPHY, where we transform moments into lasting memories. With a passion for creativity and an eye for detail, we specialize in capturing the essence of every occasion.</p>
-              <p>Founded in 2025, NR PHOTOGRAPHY has grown to become a trusted name in the photography industry. Our team of professional photographers bring expertise and enthusiasm to every project.</p>
-              <div className='photographers'>
-                <div className='photographer'>
-                  <img src={photographer1} alt="Lead Photographer" className='photographer-img'/>
-                  <h4>Nikhil Reddy</h4>
-                  <p>Lead Photographer</p>
-                </div>
-                <div className='photographer'>
-                  <img src={photographer2} alt="Creative Director" className='photographer-img' />
-                  <h4>Rachel Stone</h4>
-                  <p>Creative Director</p>
-                </div>
-              </div>
+          <div className='about-content-alt'>
+            <div className='about-image-alt'>
+              <img src={photographer1} alt="Lead Photographer" className='about-main-img'/>
+              <div className='about-img-overlay'></div>
             </div>
-            <div className='about-image'>
-              <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Professional Camera"/>
+            <div className='about-text-alt'>
+              <h2 className='about-title-alt'>Why Choose <span>NR PHOTOGRAPHY</span>?</h2>
+              <ul className='about-features'>
+                <li><strong>10+ Years Experience:</strong> Trusted by hundreds of clients for weddings, portraits, and commercial shoots.</li>
+                <li><strong>Award-Winning Team:</strong> Our photographers are recognized nationally for creativity and professionalism.</li>
+                <li><strong>Cutting-Edge Equipment:</strong> We use the latest cameras and editing tools for stunning results.</li>
+                <li><strong>Personalized Service:</strong> Every session is tailored to your unique story and style.</li>
+                <li><strong>Fast Turnaround:</strong> Receive your edited photos quickly, without compromising on quality.</li>
+              </ul>
+              <div className='about-cta'>
+                <Link to='/portfolio' className='about-btn'>See Our Work</Link>
+                <Link to='/contact' className='about-btn secondary'>Contact Us</Link>
+              </div>
             </div>
           </div>
         </div>
@@ -168,67 +187,133 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
       <section className='testimonials-section'>
         <div className='container'>
           <div className='testimonials-header'>
             <h2>Client Testimonials</h2>
             </div>
-          <div className='testimonials-grid'>
-            {testimonials.map((testimonial, index) => (
-              <div className='testimonial-card' key={index}>
-                <div className='testimonial-image'>
-                  <img src={testimonial1} alt={testimonial.author} />
-                </div>
-                <div className='testimonial-content'>
-                  <p className='quote'>"{testimonial.quote}"</p>
-                  <div className='author'>
-                    <h4>{testimonial.author}</h4>
-                    <p>{testimonial.role}</p>
+          <div className='testimonials-carousel'>
+            <div className='carousel-track'>
+              {testimonials.map((testimonial, index) => (
+                <div className='testimonial-card' key={index}>
+                  <div className='testimonial-image'>
+                    <img src={testimonial1} alt={testimonial.author} style={{width: '80px', height: '80px', objectFit: 'cover', borderRadius: '50%', margin: '0 auto'}} />
+                  </div>
+                  <div className='testimonial-content'>
+                    <p className='quote' style={{wordBreak: 'break-word', maxHeight: '110px', overflow: 'auto'}}>
+                      "{testimonial.quote}"
+                    </p>
+                    <div className='author'>
+                      <h4>{testimonial.author}</h4>
+                      <p>{testimonial.role}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <div className='carousel-dots'>
+    {testimonials.map((_, idx) => (
+      <span key={idx} className='dot'></span>
+    ))}
+  </div>
           </div>
         </div>
       </section>
 
-      {/* Blog/News Section */}
+      <section className='certificates-section'>
+        <div className='container'>
+          <h2>Our Achievements & Top Photographers</h2>
+          <div className='certificates-content'>
+            <div className='certificates-list'>
+              <img src={certificateImg} alt="Certificate 1" className='certificate-img' />
+              <img src={certificateImg} alt="Certificate 2" className='certificate-img' />
+              <img src={certificateImg} alt="Certificate 3" className='certificate-img' />
+            </div>
+            <div className='top-photographers'>
+              <h3>Meet Our Award-Winning Team</h3>
+              <div className='photographers-list'>
+                <div className='photographer-card'>
+                  <img src={photographer1} alt="Nikhil Reddy" className='photographer-img' />
+                  <h4>Nikhil Reddy</h4>
+                  <p>Lead Photographer</p>
+                  <span className='badge'>Top 10 in India</span>
+                </div>
+                <div className='photographer-card'>
+                  <img src={photographer2} alt="Rachel Stone" className='photographer-img' />
+                  <h4>Rachel Stone</h4>
+                  <p>Creative Director</p>
+                  <span className='badge'>Award Winner</span>
+                </div>
+              </div>
+              <p className='nr-place'>NR Photography is recognized as one of the best studios in the region, trusted by hundreds of happy clients and featured in top photography magazines.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className='blog-section'>
         <div className='container'>
           <div className='blog-header'>
             <h2>Latest From Our Blog</h2>
           </div>
-          <div className='blog-grid'>
-            <div className='blog-card'>
-              <div className='blog-image'>
-                <img src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_640.jpg" alt="Photography Tips" />
+          <div className='blog-carousel'>
+            <div className='blog-carousel-track'>
+              <div className='blog-card'>
+                <div className='blog-image'>
+                  <img src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_640.jpg" alt="Photography Tips" />
+                </div>
+                <div className='blog-content'>
+                  <h3>10 Tips for Perfect Portrait Photography</h3>
+                  <p className='date'>May 15, 2023</p>
+                  <p>Learn professional techniques to capture stunning portraits in any lighting condition, from natural light to studio setups. Discover posing secrets and editing tricks for flawless results.</p>
+                  <Link to="/blog/portrait-tips" className='read-more'>Read More →</Link>
+                </div>
               </div>
-              <div className='blog-content'>
-                <h3>10 Tips for Perfect Portrait Photography</h3>
-                <p className='date'>May 15, 2023</p>
-                <p>Learn professional techniques to capture stunning portraits in any lighting condition...</p>
-                <Link to="/blog/portrait-tips" className='read-more'>Read More →</Link>
+              <div className='blog-card'>
+                <div className='blog-image'>
+                  <img src="https://cdn.pixabay.com/photo/2017/06/20/22/14/man-2425121_640.jpg" alt="Wedding Photography" />
+                </div>
+                <div className='blog-content'>
+                  <h3>How to Prepare for Your Wedding Photoshoot</h3>
+                  <p className='date'>April 28, 2023</p>
+                  <p>Essential preparation tips to ensure your wedding photos are everything you dreamed of. From timelines to must-have shots, get expert advice for your big day.</p>
+                  <Link to="/blog/wedding-tips" className='read-more'>Read More →</Link>
+                </div>
+              </div>
+              <div className='blog-card'>
+                <div className='blog-image'>
+                  <img src="https://cdn.pixabay.com/photo/2016/03/14/14/21/bride-1255520_640.jpg" alt="Creative Editing" />
+                </div>
+                <div className='blog-content'>
+                  <h3>Creative Editing: Transform Your Photos</h3>
+                  <p className='date'>March 10, 2023</p>
+                  <p>Explore the latest editing trends and tools. Learn how to add drama, color, and style to your images with advanced Photoshop and Lightroom techniques.</p>
+                  <Link to="/blog/creative-editing" className='read-more'>Read More →</Link>
+                </div>
+              </div>
+              <div className='blog-card'>
+                <div className='blog-image'>
+                  <img src="https://cdn.pixabay.com/photo/2019/04/27/14/00/indian-4160039_640.jpg" alt="Event Coverage" />
+                </div>
+                <div className='blog-content'>
+                  <h3>Event Photography: Capturing the Moment</h3>
+                  <p className='date'>February 18, 2023</p>
+                  <p>Discover how to capture the energy and emotion of live events. Tips for working in challenging lighting and fast-paced environments.</p>
+                  <Link to="/blog/event-photography" className='read-more'>Read More →</Link>
+                </div>
               </div>
             </div>
-            <div className='blog-card'>
-              <div className='blog-image'>
-                <img src="https://cdn.pixabay.com/photo/2017/06/20/22/14/man-2425121_640.jpg" alt="Wedding Photography" />
-              </div>
-              <div className='blog-content'>
-                <h3>How to Prepare for Your Wedding Photoshoot</h3>
-                <p className='date'>April 28, 2023</p>
-                <p>Essential preparation tips to ensure your wedding photos are everything you dreamed of...</p>
-                <Link to="/blog/wedding-tips" className='read-more'>Read More →</Link>
-              </div>
+            <div className='blog-carousel-dots'>
+              {[0,1,2,3].map(idx => (
+                <span key={idx} className='dot'></span>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Booking Section */}
       <section className='booking-form-section' id='booking-section'>
-        <div className='container'>
+        <div className='booking-form-center-wrapper'>
           <div className='booking-header'>
             <h2>Ready to Create Memories?</h2>
             <p>Book your session today and let us capture your special moments</p>
@@ -237,7 +322,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Contact CTA Section */}
       <section className='contact-cta'>
         <div className='container'>
           <h2>Have Questions?</h2>

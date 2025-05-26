@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className='footer'>
       <div className='container footer-content'>
-        {/* Brand Section */}
+    
         <div className='footer-section'>
           <div className='brand-header'>
             <FaCamera className='brand-icon' />
@@ -17,7 +17,7 @@ const Footer = () => {
           <p className='brand-tagline'>Capturing life's precious moments with creativity and precision</p>
         </div>
 
-        {/* Quick Links */}
+     
         <div className='footer-section'>
           <h3>Quick Links</h3>
           <ul className='footer-nav'>
@@ -28,7 +28,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Services */}
         <div className='footer-section'>
           <h3>Services</h3>
           <ul className='footer-nav'>
@@ -40,7 +39,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Newsletter */}
         <div className='footer-section newsletter-section'>
         <h3>Stay Connected</h3>
           <p>Subscribe for photography tips and exclusive offers</p>
@@ -62,7 +60,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Footer Bottom */}
+    
       <div className='footer-bottom'>
         <p>© {new Date().getFullYear()} NR PHOTOGRAPHY. All rights reserved.</p>
         <div className='legal-links'>

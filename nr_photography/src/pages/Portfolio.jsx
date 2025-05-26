@@ -95,13 +95,21 @@ const Portfolio = () => {
 
       {selectedImage && (
         <div className='image-modal' onClick={() => setSelectedImage(null)}>
-          <div className='modal-content'>
+          <div className='modal-content portfolio-modal-content' onClick={e => e.stopPropagation()}>
             <img 
               src={selectedImage} 
               alt="Enlarged portfolio" 
               data-aos="zoom-in"
             />
-            <button className='close-btn'>&times;</button>
+            <div className="portfolio-modal-details">
+              <h3>Image Details</h3>
+              <p className="portfolio-modal-desc">This is a featured photograph from our portfolio. For more details or to book a similar shoot, contact us below.</p>
+              <div className="portfolio-modal-actions">
+                <Link to="/contact" className="portfolio-modal-btn">Contact Photographer</Link>
+                <Link to="/services" className="portfolio-modal-btn secondary">Book This Style</Link>
+              </div>
+            </div>
+            <button className='close-btn' onClick={() => setSelectedImage(null)}>&times;</button>
           </div>
         </div>
       )}

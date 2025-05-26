@@ -489,3 +489,241 @@
         font-size: 0.8rem 1.5rem;
     }
 }
+
+
+.portfolio-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #fff 70%, #eaf0fa 100%);
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(44,62,80,0.18);
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 540px;
+  width: 96vw;
+  position: relative;
+  animation: modalEnter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.portfolio-modal-content img {
+  width: 100%;
+  max-width: 420px;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 24px rgba(74,111,165,0.10);
+}
+
+.portfolio-modal-details {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.portfolio-modal-details h3 {
+  color: #4A6FA5;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-modal-desc {
+  color: #444;
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+}
+
+.portfolio-modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-modal-btn {
+  background: linear-gradient(135deg, #4A6FA5 60%, #e74c3c 100%);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(74,111,165,0.10);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  outline: none;
+  display: inline-block;
+  z-index: 1;
+  text-decoration: none;
+}
+
+.portfolio-modal-btn.secondary {
+  background: linear-gradient(135deg, #e74c3c 0%, #4A6FA5 100%);
+}
+
+.portfolio-modal-btn:hover, .portfolio-modal-btn:focus {
+  background: linear-gradient(135deg, #e74c3c 0%, #4A6FA5 100%);
+  color: #fff;
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 32px rgba(74,111,165,0.18);
+}
+
+@media (max-width: 600px) {
+  .portfolio-modal-content {
+    padding: 1.1rem 0.5rem 1.5rem 0.5rem;
+    max-width: 99vw;
+  }
+  .portfolio-modal-content img {
+    max-width: 98vw;
+    max-height: 180px;
+  }
+  .portfolio-modal-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem 0;
+  }
+  .portfolio-modal-actions {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+}
+
+.portfolio-section .work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  border-radius: 15px;
+  position: relative;
+}
+
+.work-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 3/2;
+  background: #f8f9fa;
+  box-shadow: 0 4px 16px rgba(44,62,80,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.work-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.5s;
+  display: block;
+}
+
+.work-item:hover img {
+  transform: scale(1.08);
+}
+
+.work-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(44,62,80,0.55);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 2;
+}
+
+.work-item:hover .work-overlay,
+.work-item:focus-within .work-overlay {
+  opacity: 1;
+}
+
+.work-overlay a {
+  background: linear-gradient(135deg, #4A6FA5 60%, #e74c3c 100%);
+  color: #fff;
+  padding: 0.7rem 1.7rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.work-overlay a:hover {
+  background: linear-gradient(135deg, #e74c3c 0%, #4A6FA5 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Modal Responsive */
+.portfolio-modal-content {
+  max-width: 540px;
+  width: 96vw;
+  padding: 2.5rem 2rem 2rem 2rem;
+}
+
+@media (max-width: 900px) {
+  .portfolio-section .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  .work-item img {
+    height: 160px;
+  }
+}
+
+@media (max-width: 600px) {
+  .portfolio-section .work-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .work-item {
+    aspect-ratio: 4/3;
+    min-width: 0;
+  }
+  .work-item img {
+    height: 120px;
+    border-radius: 10px;
+  }
+  .portfolio-modal-content {
+    padding: 1.1rem 0.5rem 1.5rem 0.5rem;
+    max-width: 99vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .work-item img {
+    height: 80px;
+  }
+}
+
+
+.work-overlay a,
+.portfolio-modal-btn {
+  font-size: 0.98rem;
+  padding: 0.7rem 1.2rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #e74c3c;
+  cursor: pointer;
+  z-index: 10;
+}
+
+@media (max-width: 600px) {
+  .close-btn {
+    font-size: 1.5rem;
+    top: 6px;
+    right: 6px;
+  }
+}

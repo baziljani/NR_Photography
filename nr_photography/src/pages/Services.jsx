@@ -125,7 +125,7 @@ const Services = () => {
           </div>
         </div>
       </section>
-      {/* Booking section anchor for Book Now button */}
+  
       <div id='booking-section'></div>
       {selectedService && (
         <ServiceModal

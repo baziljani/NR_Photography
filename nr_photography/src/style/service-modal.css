@@ -214,7 +214,6 @@
   box-shadow: 0 12px 32px rgba(231, 76, 60, 0.25);
 }
 
-/* Ensure modal-content has enough padding at the bottom for the button */
 .modal-content {
   padding-bottom: 3.5rem;
 }
@@ -243,4 +242,123 @@
         width: 36px;
         height: 36px;
     }
+}
+
+.modal-content {
+  max-width: 520px;
+  width: 96vw;
+  min-height: 420px;
+  padding: 2.2rem 1.5rem 3.5rem 1.5rem;
+  box-shadow: 0 12px 48px rgba(44,62,80,0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.service-description {
+  margin-bottom: 1.1rem;
+  font-size: 1.02rem;
+  color: #444;
+  max-height: 80px;
+  overflow-y: auto;
+}
+
+.price-section {
+  background: #f8f9fa;
+  font-size: 1.05rem;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.price {
+  font-size: 2.1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #4A6FA5, #e74c3c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0.2rem 0 0 0;
+}
+
+.sample-images {
+  margin-bottom: 1.2rem;
+}
+
+.sample-images h3 {
+  margin-bottom: 0.5rem;
+  color: #4A6FA5;
+  font-size: 1.05rem;
+}
+
+.image-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.sample-img-small {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 6px 8px 0;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+  border: 2px solid #f1f1f1;
+  transition: transform 0.2s;
+}
+
+.sample-img-small:hover {
+  transform: scale(1.08);
+  border-color: #e74c3c;
+}
+
+.cta-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.book-now-btn, .attractive-btn {
+  background: linear-gradient(135deg, #e74c3c, #FFA726);
+  color: #fff;
+  padding: 1.1rem 2.7rem;
+  font-size: 1.15rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(231, 76, 60, 0.15);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  margin: 0 auto;
+  display: block;
+  z-index: 10;
+}
+
+.book-now-btn:hover, .attractive-btn:hover {
+  background: linear-gradient(135deg, #FFA726, #e74c3c);
+  color: #fff;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(231, 76, 60, 0.25);
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    max-width: 99vw;
+    padding: 1.1rem 0.5rem 2.2rem 0.5rem;
+  }
+  .sample-img-small {
+    width: 48px;
+    height: 48px;
+  }
+  .price {
+    font-size: 1.3rem;
+  }
 }

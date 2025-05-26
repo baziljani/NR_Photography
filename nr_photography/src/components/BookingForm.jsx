@@ -21,7 +21,8 @@ import '../style/booking.css';
 
 const BookingForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
     service: '', 
@@ -49,7 +50,7 @@ const BookingForm = () => {
       };
 
       const whatsappMessage = `*New Booking Request*%0A%0A
-      *Name:* ${formData.name}%0A
+      *Name:* ${formData.firstName} ${formData.lastName}%0A
       *Email:* ${formData.email}%0A
       *Phone:* ${formData.phone}%0A
       *Service:* ${services[formData.service]}%0A
@@ -66,7 +67,8 @@ const BookingForm = () => {
       );
       
       setFormData({
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         phone: '',
         service: '',
@@ -90,57 +92,61 @@ const BookingForm = () => {
           <span className="icon-frame"><FaCamera /></span>
           Book Your Photoshoot
         </h2>
-        <form onSubmit={handleSubmit}>
-          <div className='form-group'>
-            <input
-              type="text"
-              id='name'
-              name='name'
-              value={formData.name}
-              onChange={handleChange}
-              placeholder=' '
-              required
-            />
-            <label htmlFor="name">
-              <span className="input-icon"><FaUser /></span>
-              Full Name
-            </label>
+        <form onSubmit={handleSubmit} className="booking-grid-form">
+          <div className="form-row">
+            <div className='form-group'>
+              <input
+                type="text"
+                id='firstName'
+                name='firstName'
+                value={formData.firstName}
+                onChange={handleChange}
+                placeholder=" "
+                required
+              />
+              <label htmlFor="firstName" className="booking-label">First Name</label>
+            </div>
+            <div className='form-group'>
+              <input
+                type="text"
+                id='lastName'
+                name='lastName'
+                value={formData.lastName}
+                onChange={handleChange}
+                placeholder=" "
+                required
+              />
+              <label htmlFor="lastName" className="booking-label">Last Name</label>
+            </div>
           </div>
-
-          <div className='form-group'>
-            <input
-              type="email"
-              id='email'
-              name='email'
-              value={formData.email}
-              onChange={handleChange}
-              placeholder=' '
-              required
-            />
-            <label htmlFor="email">
-              <span className="input-icon"><FaEnvelope /></span>
-              Email Address
-            </label>
+          <div className="form-row">
+            <div className='form-group'>
+              <input
+                type="email"
+                id='email'
+                name='email'
+                value={formData.email}
+                onChange={handleChange}
+                placeholder=" "
+                required
+              />
+              <label htmlFor="email" className="booking-label">Email Address</label>
+            </div>
+            <div className='form-group'>
+              <input
+                type="tel"
+                id='phone'
+                name='phone'
+                pattern='[0-9]{10}'
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder=" "
+                required
+              />
+              <label htmlFor="phone" className="booking-label">Phone Number</label>
+            </div>
           </div>
-
           <div className='form-group'>
-            <input
-              type="tel"
-              id='phone'
-              name='phone'
-              pattern='[0-9]{10}'
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder=' '
-              required
-            />
-            <label htmlFor="phone">
-              <span className="input-icon"><FaPhone /></span>
-              Phone Number
-            </label>
-          </div>
-
-          <div className='form-group select-group'>
             <select
               name="service"
               id="service"
@@ -155,9 +161,8 @@ const BookingForm = () => {
               <option value="Product Photography">Product Photography</option>
               <option value="Commercial Photography">Commercial Photography</option>
             </select>
-            <div className="select-arrow"><IoIosArrowDown /></div>
+            <label htmlFor="service" className="booking-label">Service</label>
           </div>
-
           <div className='form-group'>
             <input
               type="date"
@@ -166,41 +171,28 @@ const BookingForm = () => {
               min={new Date().toISOString().split('T')[0]}
               value={formData.date}
               onChange={handleChange}
-              placeholder=' '
               required
             />
-            <label htmlFor="date">
-              <span className="input-icon"><FaCalendarAlt /></span>
-              Preferred Date
-            </label>
+            <label htmlFor="date" className="booking-label">Preferred Date</label>
           </div>
-
           <div className='form-group'>
             <textarea
               name="message"
               id="message"
               value={formData.message}
               onChange={handleChange}
-              rows={4}
-              placeholder=' '
+              rows={3}
+              placeholder=" "
             />
-            <label htmlFor="message">
-              <span className="input-icon"><FaComment /></span>
-              Additional Details
-            </label>
+            <label htmlFor="message" className="booking-label">Additional Details</label>
           </div>
-
           <button 
             type="submit" 
             className='submit-btn' 
             disabled={loading}
           >
             <span className="button-content">
-              {loading ? 'Sending...' : (
-                <>
-                  <FaCalendarAlt /> Book Now
-                </>
-              )}
+              {loading ? 'Sending...' : 'Book Now'}
               <span className="button-hover-effect"></span>
             </span>
           </button>

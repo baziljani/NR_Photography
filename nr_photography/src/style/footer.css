@@ -1,4 +1,4 @@
-/* Base Footer Styles */
+
 .footer {
     background: linear-gradient(135deg, #1a1a1a, #000);
     color: rgba(255, 255, 255, 0.85);
@@ -16,10 +16,10 @@
     right: 0;
     height: 4px;
     background: linear-gradient(90deg, #d4af37, #b8860b);
-    /* Gold to dark gradient */
+   
 }
 
-/* Container and Layout */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -37,7 +37,7 @@
     position: relative;
 }
 
-/* Section Headings with Gold Underline */
+
 .footer-section h3 {
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
@@ -54,10 +54,9 @@
     width: 40px;
     height: 3px;
     background: #d4af37;
-    /* Gold */
+
 }
 
-/* Brand Section Styling */
 .brand-header {
     display: flex;
     align-items: center;
@@ -93,7 +92,7 @@
     border: 1px solid rgba(212, 175, 55, 0.3); 
 }
 
-/* Navigation Links */
+
 .footer-nav {
     list-style: none;
     padding: 0;
@@ -126,7 +125,7 @@
     transform: translate(5px);
 }
 
-/* Newsletter Section */
+
 .newsletter {
     display: flex;
     gap: 0.5rem;
@@ -169,22 +168,13 @@
     transform: translateY(-2px);     
 }
 
-/* Social Icons - Original Colors with Hover Effects */
 .social-links {
     display: flex;
     gap: 1.2rem;
     margin: 1.5rem 0;
 }
 
-/* .social-icon {
-    font-size: 1.2rem;
-    transition: transform 0.3s, opacity 0.3s;
-    background: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
-}
-    /* Only the icon color will show */
+
 .fa-instagram {
     color: #E1306C !important;
     background: none !important;
@@ -200,12 +190,7 @@
     background: none !important;
 }
 
-/* .social-icon:hover {
-    transform: translateY(-3px) scale(1.08);
-    opacity: 0.8;
-    filter: brightness(1.1);
-    
-} */
+
 
 
 .footer-bottom {

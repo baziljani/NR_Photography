@@ -132,7 +132,7 @@
 .social-icon {
     width: 44px;
     height: 44px;
-    /* background: #FFA726 !important; */
+
     color: #fff !important;
     border-radius: 50%;
     display: flex;
@@ -170,7 +170,7 @@
     font-size: 1rem;
     transition: all 0.3s ease;
     background: transparent;
-    /* Show placeholder by default, hide on focus */
+
 }
 
 .form-group input::placeholder,
@@ -454,4 +454,36 @@ iframe {
     .submit-btn:active {
         transform: scale(0.98);
     }
- }
+}
+
+
+
+@media (max-width: 600px) {
+  .map-container {
+    padding: 0.5rem 0.2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(44,62,80,0.10);
+    margin: 0 auto 1.5rem auto;
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: auto;
+  }
+  .map {
+    width: 100vw;
+    max-width: 100vw;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .map-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(44,62,80,0.10);
+  }
+  iframe {
+    width: 100vw !important;
+    min-width: 0;
+    max-width: 100vw;
+    height: 220px !important;
+    border-radius: 10px;
+  }
+}
