@@ -73,6 +73,62 @@ const blogPosts = [
     date: "February 18, 2023",
     desc: "Discover how to capture the energy and emotion of live events. Tips for working in challenging lighting and fast-paced environments.",
     link: "/blog/event-photography"
+  },
+  {
+    image: "https://cdn.pixabay.com/photo/2015/03/26/09/54/photographer-690293_640.jpg",
+    title: "Gear Guide: Cameras & Lenses for Every Photographer",
+    date: "January 5, 2023",
+    desc: "A comprehensive guide to choosing the right camera and lens for your style, whether you're a beginner or a pro. Compare top brands and models for portraits, weddings, and more.",
+    link: "/blog/gear-guide"
+  },
+  {
+    image: "https://cdn.pixabay.com/photo/2016/11/29/09/32/adult-1868750_640.jpg",
+    title: "Lighting 101: Mastering Natural & Studio Light",
+    date: "December 12, 2022",
+    desc: "Master the art of lighting for photography. Learn how to use natural light, reflectors, and studio setups to create stunning, professional images in any environment.",
+    link: "/blog/lighting-101"
+  },
+  {
+    image: "https://cdn.pixabay.com/photo/2017/08/06/00/03/people-2588594_640.jpg",
+    title: "Posing Tips for Flattering Photos",
+    date: "November 20, 2022",
+    desc: "Get the best out of your subjects with these easy posing tips. Perfect for family, couples, and solo portraits to make everyone look their best.",
+    link: "/blog/posing-tips"
+  },
+  {
+    image: "https://cdn.pixabay.com/photo/2015/06/24/15/45/photographer-820390_640.jpg",
+    title: "How to Build Your Photography Portfolio",
+    date: "October 8, 2022",
+    desc: "Step-by-step advice for building a standout photography portfolio that attracts clients and showcases your unique style.",
+    link: "/blog/build-portfolio"
+  },
+  {
+    image: "https://cdn.pixabay.com/photo/2016/03/23/18/58/camera-1274699_640.jpg",
+    title: "Editing Workflow: From Shoot to Share",
+    date: "September 15, 2022",
+    desc: "Streamline your editing process with these workflow tips. Learn how to organize, cull, and edit your photos efficiently for faster delivery.",
+    link: "/blog/editing-workflow"
+  },
+  {
+    image: "https://cdn.pixabay.com/photo/2015/01/28/23/35/woman-615421_640.jpg",
+    title: "Outdoor Portraits: Making the Most of Natural Light",
+    date: "August 22, 2022",
+    desc: "Discover how to use natural light to your advantage for beautiful outdoor portraits. Includes tips for golden hour, shade, and backlighting.",
+    link: "/blog/outdoor-portraits"
+  },
+  {
+    image: "https://cdn.pixabay.com/photo/2016/11/29/03/53/adult-1867889_640.jpg",
+    title: "Wedding Storytelling: Capturing the Day",
+    date: "July 30, 2022",
+    desc: "How to tell a compelling story with your wedding photography. Learn about must-have shots, candid moments, and creating a narrative.",
+    link: "/blog/wedding-storytelling"
+  },
+  {
+    image: "https://cdn.pixabay.com/photo/2017/01/20/00/30/people-1990184_640.jpg",
+    title: "Client Communication: Building Trust & Comfort",
+    date: "June 18, 2022",
+    desc: "Tips for communicating with clients before, during, and after the shoot to ensure a smooth experience and great results.",
+    link: "/blog/client-communication"
   }
 ];
 
@@ -97,25 +153,25 @@ function BlogCarousel() {
 
   React.useEffect(() => {
     timeoutRef.current = setTimeout(() => {
-      setCurrent((prev) => (prev + 1) % length);
+      setCurrent((prev) => (prev + 1) % (length - visibleCount + 1));
     }, 3500);
     return () => clearTimeout(timeoutRef.current);
-  }, [current, length]);
+  }, [current, length, visibleCount]);
 
-
-  const getVisiblePosts = () => {
-    let posts = [];
-    for (let i = 0; i < visibleCount; i++) {
-      posts.push(blogPosts[(current + i) % length]);
-    }
-    return posts;
+  // For sliding effect
+  const getTrackStyle = () => {
+    const percent = (100 / visibleCount) * current;
+    return {
+      transform: `translateX(-${percent}%)`,
+      transition: 'transform 0.6s cubic-bezier(0.4,0,0.2,1)'
+    };
   };
 
   return (
     <div className='blog-carousel'>
-      <div className='blog-carousel-multi'>
-        {getVisiblePosts().map((post, idx) => (
-          <div className='blog-card' key={idx}>
+      <div className='carousel-track blog-carousel-multi' style={getTrackStyle()}>
+        {blogPosts.map((post, idx) => (
+          <div className='blog-card' key={idx} style={{ minWidth: `${100 / visibleCount}%`, maxWidth: `${100 / visibleCount}%` }}>
             <div className='blog-image'>
               <img src={post.image} alt={post.title} />
             </div>
@@ -129,7 +185,7 @@ function BlogCarousel() {
         ))}
       </div>
       <div className='blog-carousel-dots'>
-        {blogPosts.map((_, idx) => (
+        {Array.from({ length: length - visibleCount + 1 }).map((_, idx) => (
           <span key={idx} className={`dot${idx === current ? ' active' : ''}`}></span>
         ))}
       </div>
@@ -234,6 +290,59 @@ function TestimonialsCarousel() {
   );
 }
 
+// --- ServicesCarousel for mobile, matching BlogCarousel/TestimonialCarousel logic ---
+function ServicesCarousel({ services }) {
+  const [current, setCurrent] = React.useState(0);
+  const length = services.length;
+
+  // Responsive: 3 on desktop, 2 on tablet, 1 on mobile
+  const getVisibleCount = () => {
+    if (window.innerWidth < 700) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 3;
+  };
+  const [visibleCount, setVisibleCount] = React.useState(getVisibleCount());
+
+  React.useEffect(() => {
+    const handleResize = () => setVisibleCount(getVisibleCount());
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [current, length]);
+
+  const getVisibleServices = () => {
+    let cards = [];
+    for (let i = 0; i < visibleCount; i++) {
+      cards.push(services[(current + i) % length]);
+    }
+    return cards;
+  };
+
+  return (
+    <div className='services-carousel-multi'>
+      {getVisibleServices().map((service, idx) => (
+        <div className='service-tile' key={idx}>
+          <div className='service-icon-large service-icon-circle'>{service.icon}</div>
+          <div className='service-info'>
+            <h3 className='service-title-alt'>{service.title}</h3>
+            <p className='service-desc-alt'>{service.description}</p>
+            <div className='service-actions'>
+              <Link to={`/services#${service.title.replace(/\s+/g, '-').toLowerCase()}`} className='service-action-link yellow-btn'>View Details</Link>
+              <Link to='/#booking-section' className='service-action-link yellow-btn'>Book Now</Link>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 const Home = () => {
   const services = [
     {
@@ -276,6 +385,14 @@ const Home = () => {
   useAutoScrollCarousel(servicesCarouselRef, '.service-tile');
   useAutoScrollCarousel(testimonialsCarouselRef, '.testimonial-card');
 
+  // Responsive state for mobile detection
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 700);
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 700);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className='home-page'>
       <Helmet>
@@ -286,7 +403,7 @@ const Home = () => {
 
       <section className='hero-section'>
   <div className='hero-image-wrapper'>
-    <img src={heroImage} alt="Wedding photography" className='hero-image' />
+    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1200&q=80" alt="Attractive photography background" className='hero-image' />
     <div className='hero-overlay'></div>
   </div>
   
@@ -314,25 +431,30 @@ const Home = () => {
 </section>
 
       <section className='services-section'>
-  <div className='container'>
-    <h2 className='services-title-alt'>Our Services</h2>
-    <div className='services-list-alt' ref={servicesCarouselRef}>
-      {services.map((service, index) => (
-        <div className='service-tile' key={index}>
-          <div className='service-icon-large service-icon-circle'>{service.icon}</div>
-          <div className='service-info'>
-            <h3 className='service-title-alt'>{service.title}</h3>
-            <p className='service-desc-alt'>{service.description}</p>
-            <div className='service-actions'>
-              <Link to={`/services#${service.title.replace(/\s+/g, '-').toLowerCase()}`} className='service-action-link yellow-btn'>View Details</Link>
-              <Link to='/#booking-section' className='service-action-link yellow-btn'>Book Now</Link>
+        <div className='container'>
+          <h2 className='services-title-alt'>Our Services</h2>
+          {/* Use carousel on mobile, grid on desktop */}
+          {isMobile ? (
+            <ServicesCarousel services={services} />
+          ) : (
+            <div className='services-list-alt'>
+              {services.map((service, index) => (
+                <div className='service-tile' key={index}>
+                  <div className='service-icon-large service-icon-circle'>{service.icon}</div>
+                  <div className='service-info'>
+                    <h3 className='service-title-alt'>{service.title}</h3>
+                    <p className='service-desc-alt'>{service.description}</p>
+                    <div className='service-actions'>
+                      <Link to={`/services#${service.title.replace(/\s+/g, '-').toLowerCase()}`} className='service-action-link yellow-btn'>View Details</Link>
+                      <Link to='/#booking-section' className='service-action-link yellow-btn'>Book Now</Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
+          )}
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
 
       <section className='about-section'>
@@ -362,7 +484,7 @@ const Home = () => {
 
       <section className='portfolio-section'>
         <div className='container'>
-          <h2>Portfolio Highlights</h2>
+          <h2>Our Portfolio</h2>
           <div className='work-grid'>
             {[
               'https://cdn.pixabay.com/photo/2020/11/20/16/26/labrador-5762115_640.jpg',
