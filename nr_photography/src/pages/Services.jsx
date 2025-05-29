@@ -85,6 +85,63 @@ const servicesData = [
       'https://cdn.pixabay.com/photo/2024/12/26/17/31/newborn-photography-9292504_640.jpg',
       'https://cdn.pixabay.com/photo/2015/05/26/12/31/baby-784609_640.jpg'
     ]
+  },
+  {
+    id: 7,
+    title: 'Drone Shots',
+    shortDescription: 'Stunning aerial perspectives for your special events.',
+    description: 'Capture breathtaking aerial views of your wedding, event, or property with our professional drone photography and videography services. Perfect for adding a cinematic touch to your memories.',
+    price: 799,
+    image: 'https://cdn.pixabay.com/photo/2016/11/29/02/07/drone-1866742_640.jpg',
+    sampleImages: [
+      'https://cdn.pixabay.com/photo/2017/06/20/19/22/drone-2424067_640.jpg',
+      'https://cdn.pixabay.com/photo/2016/11/29/09/32/drone-1866742_640.jpg'
+    ]
+  },
+  {
+    id: 8,
+    title: 'Cinematic',
+    shortDescription: 'Movie-like shots with creative lighting and storytelling.',
+    description: 'Our cinematic photography brings a film-like quality to your events, using advanced techniques in lighting, composition, and editing for a dramatic, memorable look.',
+    price: 999,
+    image: 'https://cdn.pixabay.com/photo/2016/03/15/17/05/portrait-1258721_1280.jpg',
+    sampleImages: [
+      'https://cdn.pixabay.com/photo/2016/11/29/09/32/wedding-1866742_640.jpg'
+    ]
+  },
+  {
+    id: 9,
+    title: 'Print & Albums',
+    shortDescription: 'Beautifully designed albums and high-quality prints.',
+    description: 'Preserve your memories with custom-designed albums and professional prints. Choose from a variety of styles and finishes to match your taste.',
+    price: 399,
+    image: 'https://cdn.pixabay.com/photo/2016/06/09/06/33/love-1445269_640.jpg',
+    sampleImages: [
+      'https://cdn.pixabay.com/photo/2017/01/20/00/30/photo-album-1996924_640.jpg'
+    ]
+  },
+  {
+    id: 10,
+    title: 'Regular',
+    shortDescription: 'Classic photography for all your important moments.',
+    description: 'Our regular photography service covers all the essential moments, group shots, and candid emotions in a timeless style.',
+    price: 499,
+    image: 'https://cdn.pixabay.com/photo/2016/11/21/12/51/mobile-phone-1845233_640.jpg',
+    sampleImages: [
+      'https://cdn.pixabay.com/photo/2016/11/21/12/51/mobile-phone-1845233_640.jpg'
+    ]
+  },
+  {
+    id: 11,
+    title: 'Baby Shower',
+    shortDescription: 'Creative and candid baby shower photography.',
+    description: 'Celebrate the joy of welcoming your baby with our baby shower photography, capturing the love and excitement of your special day.',
+    price: 599,
+    image: 'https://img.freepik.com/free-photo/brunette-pregnant-lady-kisses-her-man-while-they-stand-field_8353-1096.jpg?ga=GA1.1.66629728.1748455373&semt=ais_hybrid&w=740',
+    sampleImages: [
+      'https://cdn.pixabay.com/photo/2017/01/20/00/30/photo-album-1996924_640.jpg',
+      'https://cdn.pixabay.com/photo/2016/11/18/15/46/birthday-1835443_640.jpg'
+    ]
   }
 ];
 
@@ -106,8 +163,8 @@ const Services = () => {
           <h1>Capture Your Special Moments</h1>
           <p className='hero-subtitle'>Premium Photography Services in India</p>
           <div className='hero-cta'>
-            <button className='cta-btn primary' onClick={scrollToBooking}>Book Now</button>
-            <button className='cta-btn secondary' onClick={scrollToPackages}>View Packages</button>
+            <button className='cta-btn yellow-btn' onClick={scrollToBooking}>Book Now</button>
+            <button className='cta-btn yellow-btn' onClick={scrollToPackages}>View Packages</button>
           </div>
         </div>
       </section>

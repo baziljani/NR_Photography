@@ -30,8 +30,7 @@ const Contact = () => {
     <div className='contact-page'>
       <section className='contact-hero'>
         <div className='container'>
-          <div className='hero-content'>
-            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=900&q=80" alt="Contact NR Photography" className='contact-hero-img' />
+          <div className='hero-content hero-content-column'>
             <div className='hero-text'>
               <h1>Contact Us</h1>
               <p>Let's connect and make your moments unforgettable. Reach out for bookings, collaborations, or any photography inquiries. Our team is here to help you every step of the way.</p>

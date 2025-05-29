@@ -18,11 +18,20 @@
     justify-content: center;
     gap: 3rem;
     flex-wrap: wrap;
-    flex-direction: row;
+    /* flex-direction: row; */
     text-align: left;
 }
 
-.contact-hero-img {
+.hero-content-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.5rem 0 2rem 0;
+}
+
+/* .contact-hero-img {
     width: 340px;
     height: 340px;
     object-fit: cover;
@@ -30,12 +39,12 @@
     box-shadow: 0 8px 32px rgba(44,62,80,0.18);
     margin-bottom: 0;
     flex-shrink: 0;
-}
+} */
 
-.hero-text {
-    max-width: 600px;
-    text-align: left;
-    margin: 0;
+.contact-hero .hero-text {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .contact-content {

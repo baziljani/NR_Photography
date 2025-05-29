@@ -63,6 +63,17 @@
     background: white;
     color: #e74c3c;
 }
+.cta-btn.yellow-btn,
+.cta-btn.yellow-btn:visited {
+  background: #FFD600 !important;
+  color: #111 !important;
+  border: none !important;
+}
+
+.cta-btn.yellow-btn:hover {
+  background: #FFB300 !important;
+  color: #111 !important;
+}
 
 @media (max-width: 600px) {
     .services-hero {
@@ -262,9 +273,17 @@
     flex-direction: column; 
 }
 
+.card-content p {
+  color: #444;
+  font-size: 1.05rem;
+  margin: 0.7rem 0 0.5rem 0;
+  opacity: 1;
+  display: block;
+}
+
 .view-details-btn {
-    background: #e74c3c;
-    color: white;
+    background: yellow;
+    color: black;
     border-radius: 25px;
     transition: background 0.3s ease; 
     margin-top: auto;

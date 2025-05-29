@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import BookingForm from '../components/BookingForm';
@@ -9,6 +9,230 @@ import photographer2 from '../assets/photographer2.png';
 import testimonial1 from '../assets/testmonial1.png';
 import { FaCameraRetro, FaUserFriends, FaBuilding, FaRegCalendarCheck, FaPalette, FaFilm } from 'react-icons/fa';
 import certificateImg from '../assets/certificate.png';
+
+
+function useAutoScrollCarousel(carouselRef, cardSelector, gap = 16, interval = 3500) {
+  useEffect(() => {
+    const track = carouselRef.current;
+    if (!track) return;
+    let scrollAmount = 0;
+    let cardWidth = 0;
+    let intervalId;
+    let isHovered = false;
+
+    const handleMouseEnter = () => { isHovered = true; };
+    const handleMouseLeave = () => { isHovered = false; };
+    track.addEventListener('mouseenter', handleMouseEnter);
+    track.addEventListener('mouseleave', handleMouseLeave);
+
+    const scrollNext = () => {
+      if (!track || isHovered) return;
+      const cards = track.querySelectorAll(cardSelector);
+      if (!cards.length) return;
+      cardWidth = cards[0].offsetWidth + gap;
+      scrollAmount += cardWidth;
+      if (scrollAmount >= track.scrollWidth - track.offsetWidth) {
+        scrollAmount = 0;
+      }
+      track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    };
+    intervalId = setInterval(scrollNext, interval);
+    return () => {
+      clearInterval(intervalId);
+      track.removeEventListener('mouseenter', handleMouseEnter);
+      track.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [carouselRef, cardSelector, gap, interval]);
+}
+
+const blogPosts = [
+  {
+    image: "https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_640.jpg",
+    title: "10 Tips for Perfect Portrait Photography",
+    date: "May 15, 2023",
+    desc: "Learn professional techniques to capture stunning portraits in any lighting condition, from natural light to studio setups. Discover posing secrets and editing tricks for flawless results.",
+    link: "/blog/portrait-tips"
+  },
+  {
+    image: "https://cdn.pixabay.com/photo/2017/06/20/22/14/man-2425121_640.jpg",
+    title: "How to Prepare for Your Wedding Photoshoot",
+    date: "April 28, 2023",
+    desc: "Essential preparation tips to ensure your wedding photos are everything you dreamed of. From timelines to must-have shots, get expert advice for your big day.",
+    link: "/blog/wedding-tips"
+  },
+  {
+    image: "https://cdn.pixabay.com/photo/2016/03/14/14/21/bride-1255520_640.jpg",
+    title: "Creative Editing: Transform Your Photos",
+    date: "March 10, 2023",
+    desc: "Explore the latest editing trends and tools. Learn how to add drama, color, and style to your images with advanced Photoshop and Lightroom techniques.",
+    link: "/blog/creative-editing"
+  },
+  {
+    image: "https://cdn.pixabay.com/photo/2019/04/27/14/00/indian-4160039_640.jpg",
+    title: "Event Photography: Capturing the Moment",
+    date: "February 18, 2023",
+    desc: "Discover how to capture the energy and emotion of live events. Tips for working in challenging lighting and fast-paced environments.",
+    link: "/blog/event-photography"
+  }
+];
+
+function BlogCarousel() {
+  const [current, setCurrent] = React.useState(0);
+  const timeoutRef = React.useRef(null);
+  const length = blogPosts.length;
+
+  // Responsive: 3 on desktop, 2 on tablet, 1 on mobile
+  const getVisibleCount = () => {
+    if (window.innerWidth < 700) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 3;
+  };
+  const [visibleCount, setVisibleCount] = React.useState(getVisibleCount());
+
+  React.useEffect(() => {
+    const handleResize = () => setVisibleCount(getVisibleCount());
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  React.useEffect(() => {
+    timeoutRef.current = setTimeout(() => {
+      setCurrent((prev) => (prev + 1) % length);
+    }, 3500);
+    return () => clearTimeout(timeoutRef.current);
+  }, [current, length]);
+
+
+  const getVisiblePosts = () => {
+    let posts = [];
+    for (let i = 0; i < visibleCount; i++) {
+      posts.push(blogPosts[(current + i) % length]);
+    }
+    return posts;
+  };
+
+  return (
+    <div className='blog-carousel'>
+      <div className='blog-carousel-multi'>
+        {getVisiblePosts().map((post, idx) => (
+          <div className='blog-card' key={idx}>
+            <div className='blog-image'>
+              <img src={post.image} alt={post.title} />
+            </div>
+            <div className='blog-content'>
+              <h3>{post.title}</h3>
+              <p className='date'>{post.date}</p>
+              <p>{post.desc}</p>
+              <Link to={post.link} className='read-more'>Read More →</Link>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className='blog-carousel-dots'>
+        {blogPosts.map((_, idx) => (
+          <span key={idx} className={`dot${idx === current ? ' active' : ''}`}></span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const testimonials = [
+  {
+    quote: "NR Photography captured our wedding perfectly! The photos are stunning.",
+    author: "Sarah & James",
+    role: "Wedding Clients"
+  },
+  {
+    quote: "The team is professional and creative. Our product photos increased sales by 30%!",
+    author: "Michael Chen",
+    role: "Business Owner"
+  },
+  {
+    quote: "Best portrait experience I've ever had. The results were worth every penny.",
+    author: "Emma Johnson",
+    role: "Model"
+  },
+  {
+    quote: "NR Photography made our event unforgettable. Highly recommended!",
+    author: "Priya Singh",
+    role: "Event Client"
+  },
+  {
+    quote: "Creative, reliable, and always on time. The best photography team!",
+    author: "David Lee",
+    role: "Corporate Client"
+  },
+  {
+    quote: "Our family portraits are beautiful. Thank you for your patience and talent!",
+    author: "The Martins",
+    role: "Family Session"
+  }
+];
+
+function TestimonialsCarousel() {
+  const [current, setCurrent] = React.useState(0);
+  const timeoutRef = React.useRef(null);
+  const length = testimonials.length;
+
+  // Responsive: 3 on desktop, 2 on tablet, 1 on mobile
+  const getVisibleCount = () => {
+    if (window.innerWidth < 700) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 3;
+  };
+  const [visibleCount, setVisibleCount] = React.useState(getVisibleCount());
+
+  React.useEffect(() => {
+    const handleResize = () => setVisibleCount(getVisibleCount());
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  React.useEffect(() => {
+    timeoutRef.current = setTimeout(() => {
+      setCurrent((prev) => (prev + 1) % length);
+    }, 2000); // Change interval to 2 seconds
+    return () => clearTimeout(timeoutRef.current);
+  }, [current, length]);
+
+  // Looping logic for visible cards
+  const getVisibleTestimonials = () => {
+    let cards = [];
+    for (let i = 0; i < visibleCount; i++) {
+      cards.push(testimonials[(current + i) % length]);
+    }
+    return cards;
+  };
+
+  return (
+    <div className='testimonials-carousel'>
+      <div className='carousel-track testimonials-carousel-multi'>
+        {getVisibleTestimonials().map((testimonial, idx) => (
+          <div className='testimonial-card' key={idx}>
+            <div className='testimonial-image'>
+              <img src={testimonial1} alt={testimonial.author} style={{width: '80px', height: '80px', objectFit: 'cover', borderRadius: '50%', margin: '0 auto'}} />
+            </div>
+            <div className='testimonial-content'>
+              <p className='quote' style={{wordBreak: 'break-word', maxHeight: '110px', overflow: 'auto'}}>
+                "{testimonial.quote}"
+              </p>
+              <div className='author'>
+                <h4>{testimonial.author}</h4>
+                <p>{testimonial.role}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className='carousel-dots'>
+        {testimonials.map((_, idx) => (
+          <span key={idx} className={`dot${idx === current ? ' active' : ''}`}></span>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const Home = () => {
   const services = [
@@ -44,38 +268,13 @@ const Home = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      quote: "NR Photography captured our wedding perfectly! The photos are stunning.",
-      author: "Sarah & James",
-      role: "Wedding Clients"
-    },
-    {
-      quote: "The team is professional and creative. Our product photos increased sales by 30%!",
-      author: "Michael Chen",
-      role: "Business Owner"
-    },
-    {
-      quote: "Best portrait experience I've ever had. The results were worth every penny.",
-      author: "Emma Johnson",
-      role: "Model"
-    },
-    {
-      quote: "NR Photography made our event unforgettable. Highly recommended!",
-      author: "Priya Singh",
-      role: "Event Client"
-    },
-    {
-      quote: "Creative, reliable, and always on time. The best photography team!",
-      author: "David Lee",
-      role: "Corporate Client"
-    },
-    {
-      quote: "Our family portraits are beautiful. Thank you for your patience and talent!",
-      author: "The Martins",
-      role: "Family Session"
-    }
-  ];
+  const blogCarouselRef = useRef(null);
+  const servicesCarouselRef = useRef(null);
+  const testimonialsCarouselRef = useRef(null);
+
+  useAutoScrollCarousel(blogCarouselRef, '.blog-card');
+  useAutoScrollCarousel(servicesCarouselRef, '.service-tile');
+  useAutoScrollCarousel(testimonialsCarouselRef, '.testimonial-card');
 
   return (
     <div className='home-page'>
@@ -117,16 +316,16 @@ const Home = () => {
       <section className='services-section'>
   <div className='container'>
     <h2 className='services-title-alt'>Our Services</h2>
-    <div className='services-list-alt'>
+    <div className='services-list-alt' ref={servicesCarouselRef}>
       {services.map((service, index) => (
         <div className='service-tile' key={index}>
-          <div className='service-icon-large'>{service.icon}</div>
+          <div className='service-icon-large service-icon-circle'>{service.icon}</div>
           <div className='service-info'>
             <h3 className='service-title-alt'>{service.title}</h3>
             <p className='service-desc-alt'>{service.description}</p>
             <div className='service-actions'>
-              <Link to={`/services#${service.title.replace(/\s+/g, '-').toLowerCase()}`} className='service-action-link'>View Details</Link>
-              <Link to='/#booking-section' className='service-action-link book-now'>Book Now</Link>
+              <Link to={`/services#${service.title.replace(/\s+/g, '-').toLowerCase()}`} className='service-action-link yellow-btn'>View Details</Link>
+              <Link to='/#booking-section' className='service-action-link yellow-btn'>Book Now</Link>
             </div>
           </div>
         </div>
@@ -163,7 +362,7 @@ const Home = () => {
 
       <section className='portfolio-section'>
         <div className='container'>
-          <h2>Featured Work</h2>
+          <h2>Portfolio Highlights</h2>
           <div className='work-grid'>
             {[
               'https://cdn.pixabay.com/photo/2020/11/20/16/26/labrador-5762115_640.jpg',
@@ -191,32 +390,8 @@ const Home = () => {
         <div className='container'>
           <div className='testimonials-header'>
             <h2>Client Testimonials</h2>
-            </div>
-          <div className='testimonials-carousel'>
-            <div className='carousel-track'>
-              {testimonials.map((testimonial, index) => (
-                <div className='testimonial-card' key={index}>
-                  <div className='testimonial-image'>
-                    <img src={testimonial1} alt={testimonial.author} style={{width: '80px', height: '80px', objectFit: 'cover', borderRadius: '50%', margin: '0 auto'}} />
-                  </div>
-                  <div className='testimonial-content'>
-                    <p className='quote' style={{wordBreak: 'break-word', maxHeight: '110px', overflow: 'auto'}}>
-                      "{testimonial.quote}"
-                    </p>
-                    <div className='author'>
-                      <h4>{testimonial.author}</h4>
-                      <p>{testimonial.role}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className='carousel-dots'>
-    {testimonials.map((_, idx) => (
-      <span key={idx} className='dot'></span>
-    ))}
-  </div>
           </div>
+          <TestimonialsCarousel />
         </div>
       </section>
 
@@ -256,59 +431,7 @@ const Home = () => {
           <div className='blog-header'>
             <h2>Latest From Our Blog</h2>
           </div>
-          <div className='blog-carousel'>
-            <div className='blog-carousel-track'>
-              <div className='blog-card'>
-                <div className='blog-image'>
-                  <img src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_640.jpg" alt="Photography Tips" />
-                </div>
-                <div className='blog-content'>
-                  <h3>10 Tips for Perfect Portrait Photography</h3>
-                  <p className='date'>May 15, 2023</p>
-                  <p>Learn professional techniques to capture stunning portraits in any lighting condition, from natural light to studio setups. Discover posing secrets and editing tricks for flawless results.</p>
-                  <Link to="/blog/portrait-tips" className='read-more'>Read More →</Link>
-                </div>
-              </div>
-              <div className='blog-card'>
-                <div className='blog-image'>
-                  <img src="https://cdn.pixabay.com/photo/2017/06/20/22/14/man-2425121_640.jpg" alt="Wedding Photography" />
-                </div>
-                <div className='blog-content'>
-                  <h3>How to Prepare for Your Wedding Photoshoot</h3>
-                  <p className='date'>April 28, 2023</p>
-                  <p>Essential preparation tips to ensure your wedding photos are everything you dreamed of. From timelines to must-have shots, get expert advice for your big day.</p>
-                  <Link to="/blog/wedding-tips" className='read-more'>Read More →</Link>
-                </div>
-              </div>
-              <div className='blog-card'>
-                <div className='blog-image'>
-                  <img src="https://cdn.pixabay.com/photo/2016/03/14/14/21/bride-1255520_640.jpg" alt="Creative Editing" />
-                </div>
-                <div className='blog-content'>
-                  <h3>Creative Editing: Transform Your Photos</h3>
-                  <p className='date'>March 10, 2023</p>
-                  <p>Explore the latest editing trends and tools. Learn how to add drama, color, and style to your images with advanced Photoshop and Lightroom techniques.</p>
-                  <Link to="/blog/creative-editing" className='read-more'>Read More →</Link>
-                </div>
-              </div>
-              <div className='blog-card'>
-                <div className='blog-image'>
-                  <img src="https://cdn.pixabay.com/photo/2019/04/27/14/00/indian-4160039_640.jpg" alt="Event Coverage" />
-                </div>
-                <div className='blog-content'>
-                  <h3>Event Photography: Capturing the Moment</h3>
-                  <p className='date'>February 18, 2023</p>
-                  <p>Discover how to capture the energy and emotion of live events. Tips for working in challenging lighting and fast-paced environments.</p>
-                  <Link to="/blog/event-photography" className='read-more'>Read More →</Link>
-                </div>
-              </div>
-            </div>
-            <div className='blog-carousel-dots'>
-              {[0,1,2,3].map(idx => (
-                <span key={idx} className='dot'></span>
-              ))}
-            </div>
-          </div>
+          <BlogCarousel />
         </div>
       </section>
 

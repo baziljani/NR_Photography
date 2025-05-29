@@ -57,9 +57,6 @@ const Header = () => {
         <div className='logo'>
           <Link to='/' onClick={closeMenu} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
             <img ref={iconRef} src={icon1} alt='Camera Icon' className='logo-icon' />
-            <span className='logo-text'>
-              <span className='highlight'>NR</span> Photography
-            </span>
           </Link>
         </div>
 

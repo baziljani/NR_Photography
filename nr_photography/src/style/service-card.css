@@ -165,9 +165,7 @@
 .price {
     font-size: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: yellow;
 }
 .image-grid {
     display: grid;
@@ -205,10 +203,40 @@
 }
 
 .view-details-btn:hover, .view-details-btn:focus {
-  background: linear-gradient(135deg, #e74c3c 0%, #4A6FA5 100%);
-  color: #fff;
+  /* background: linear-gradient(135deg, #e74c3c 0%, #4A6FA5 100%); */
+  background: #FFD600 !important;
+  color: #000 !important;
   transform: translateY(-3px) scale(1.04);
   box-shadow: 0 8px 32px rgba(74,111,165,0.18);
+}
+
+.service-card-sections-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: 0.7rem 0 0.5rem 0;
+}
+.service-card-section-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+  max-width: 90px;
+}
+.section-title-preview {
+  font-size: 0.85rem;
+  color: #4A6FA5;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  text-align: center;
+}
+.section-img-preview {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(44,62,80,0.10);
+  margin-bottom: 0.2rem;
 }
 
 @media (max-width: 600px) {
