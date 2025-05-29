@@ -36,13 +36,8 @@ const Portfolio = () => {
   return  (
     <div className='portfolio-page'>
       <section className='portfolio-hero'>
-        <div className='hero-content'>
-          <img 
-            src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80" 
-            alt="Camera Hero" 
-            className="portfolio-hero-img"
-          />
-          <div className="hero-text">
+        <div className='hero-content' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', width: '100%' }}>
+          <div className="hero-text" style={{ textAlign: 'center', width: '100%' }}>
             <h1 data-aos="fade-up">Captured Moments</h1>
             <p data-aos="fade-up" data-aos-delay="200">Witness Our Visual Storytelling Journey</p>
             <p className="hero-highlight">Every click tells a story. Explore our best shots and creative vision.</p>

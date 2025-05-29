@@ -1521,6 +1521,35 @@ h2 {
   }
 }
 
+@media (min-width: 401px) and (max-width: 600px) {
+  .hero-buttons {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 0.4rem !important;
+    margin-top: 0.3rem !important;
+    margin-bottom: 0.1rem !important;
+  }
+  .btn,
+  .btn-hero,
+  .btn-portfolio,
+  .btn-contact {
+    width: 70% !important;
+    min-width: 80px !important;
+    max-width: 140px !important;
+    font-size: 0.9rem !important;
+    padding: 0.5rem 0.3rem !important;
+    margin: 0.08rem auto !important;
+    display: block !important;
+    border-radius: 14px !important;
+    text-align: center !important;
+    background: #FFD600 !important;
+    color: #111 !important;
+    box-shadow: 0 2px 8px #00000033 !important;
+  }
+}
+
 /* Blog Carousel: Desktop disables manual scroll, only auto-scrolls */
 @media (min-width: 769px) {
   .blog-carousel-track {
@@ -1726,26 +1755,73 @@ h2 {
     text-align: center;
   }
   .hero-buttons {
-    margin-top: 0.7rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.2rem;
+    display: flex;
     gap: 0.5rem;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .brand-name {
+    color: #FFD600 !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    text-shadow: 0 2px 8px #000, 0 4px 16px #000;
+  }
+  .hero-description, .hero-text p {
+    color: #fff !important;
+    opacity: 1 !important;
+    text-shadow: 0 2px 8px #000, 0 4px 16px #000;
+  }
+  .btn, .btn-hero, .btn-portfolio, .btn-contact {
+    background: #FFD600 !important;
+    color: #111 !important;
+    border: none !important;
+    box-shadow: 0 2px 8px #00000033;
+  }
+  
+}
+
+@media (max-width: 400px) {
+  .hero-section {
+    min-height: 350px !important;
+    height: auto !important;
+    padding-bottom: 0 !important;
+  }
+  .hero-content {
+    padding: 0.5rem 0.2rem 0.2rem 0.2rem !important;
+    gap: 0.1rem !important;
+  }
+  .hero-buttons {
+    margin-top: 0.3rem !important;
+    margin-bottom: 0.2rem !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    width: 80% !important;
   }
   .btn,
   .btn-hero,
   .btn-portfolio,
   .btn-contact {
-    width: 80%;
-    min-width: 120px;
-    max-width: 220px;
-    font-size: 0.95rem;
-    padding: 0.6rem 0.5rem;
-    margin: 0 auto;
-    display: block;
-    border-radius: 18px;
-    text-align: center;
+    width: 90% !important;
+    min-width: 60px !important;
+    max-width: 120px !important;
+    font-size: 0.85rem !important;
+    padding: 0.4rem 0.2rem !important;
+    margin: 0.08rem auto !important;
+    display: block !important;
+    border-radius: 12px !important;
+    text-align: center !important;
+    background: #FFD600 !important;
+    color: #111 !important;
+    box-shadow: 0 2px 8px #00000033 !important;
   }
 }
 
