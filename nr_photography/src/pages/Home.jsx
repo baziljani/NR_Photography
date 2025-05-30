@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import BookingForm from '../components/BookingForm';
 import '../style/home.css';
-import heroImage from '../assets/hero1.jpg';
 import photographer1 from '../assets/photographer2.png';
 import photographer2 from '../assets/photographer2.png';
 import testimonial1 from '../assets/testmonial1.png';
@@ -328,18 +327,80 @@ function ServicesCarousel({ services }) {
     <div className='services-carousel-multi'>
       {getVisibleServices().map((service, idx) => (
         <div className='service-tile' key={idx}>
-          <div className='service-icon-large service-icon-circle'>{service.icon}</div>
+          <div className='service-icon-large service-icon-circle logo-shadow'>
+            {service.icon}
+          </div>
           <div className='service-info'>
             <h3 className='service-title-alt'>{service.title}</h3>
             <p className='service-desc-alt'>{service.description}</p>
             <div className='service-actions'>
-              <Link to={`/services#${service.title.replace(/\s+/g, '-').toLowerCase()}`} className='service-action-link yellow-btn'>View Details</Link>
-              <Link to='/#booking-section' className='service-action-link yellow-btn'>Book Now</Link>
+              <Link to={`/services#${service.title.replace(/\s+/g, '-').toLowerCase()}`} className='service-action-link yellow-btn service-btn'>View Details</Link>
+              <Link to='/#booking-section' className='service-action-link yellow-btn service-btn'>Book Now</Link>
             </div>
           </div>
         </div>
       ))}
     </div>
+  );
+}
+
+// HERO SECTION WITH PHOTO STUDIO/CAMERA IMAGES & HIGHLIGHTED BRAND NAME
+const heroImages = [
+  "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80", // camera on tripod
+  "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=1200&q=80", // camera closeup
+  "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80", // studio lights
+  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"  // camera in hand
+];
+
+function HeroSection() {
+  const [current, setCurrent] = React.useState(0);
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % heroImages.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section className='hero-section'>
+      <div className='hero-image-wrapper'>
+        {heroImages.map((img, idx) => (
+          <img
+            key={idx}
+            src={img}
+            alt={`Photo Studio Slide ${idx + 1}`}
+            className={`hero-image${idx === current ? ' active' : ''}`}
+            style={{ opacity: idx === current ? 1 : 0, zIndex: idx === current ? 2 : 1, transition: 'opacity 1s' }}
+          />
+        ))}
+        <div className='hero-overlay'></div>
+      </div>
+      <div className='hero-content hero-flex-row'>
+        <div className='hero-mobile-overlay'>
+          <div className='logo-title'>
+            <h1 className='brand-name highlight-font'>NR <span>PHOTOGRAPHY</span></h1>
+          </div>
+          <div className='hero-text-content'>
+            <h2 className='hero-title'>
+              Capturing Life's Beautiful<br />
+              Moments
+            </h2>
+            <p className='hero-description'>
+              Specializing in wedding, portrait, and event photography with a<br />
+              timeless, elegant style that tells your unique story.
+            </p>
+            <div className='hero-buttons'>
+              <Link to="/portfolio" className='btn btn-portfolio'>
+                <span className='btn-content'>View Portfolio</span>
+              </Link>
+              <Link to="/contact" className='btn btn-contact'>
+                <span className='btn-content'>Get In Touch</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -400,35 +461,7 @@ const Home = () => {
         <meta name="description" content="Capture life's precious moments with NR Photography. Professional wedding, portrait, and commercial photography services." />
         <meta name="keywords" content="photography, wedding photos, portrait photography, commercial photography" />
       </Helmet>
-
-      <section className='hero-section'>
-  <div className='hero-image-wrapper'>
-    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1200&q=80" alt="Attractive photography background" className='hero-image' />
-    <div className='hero-overlay'></div>
-  </div>
-  
-  <div className='hero-content'>
-    <div className='logo-title'>
-      <h1 className='brand-name'>NR PHOTOGRAPHY</h1>
-    </div>
-    <h2 className='hero-title'>
-      Capturing Life's Beautiful<br />
-      Moments
-    </h2>
-    <p className='hero-description'>
-      Specializing in wedding, portrait, and event photography with a<br />
-      timeless, elegant style that tells your unique story.
-    </p>
-    <div className='hero-buttons'>
-      <Link to="/portfolio" className='btn btn-portfolio'>
-        <span className='btn-content'>View Portfolio</span>
-      </Link>
-      <Link to="/contact" className='btn btn-contact'>
-        <span className='btn-content'>Get In Touch</span>
-      </Link>
-    </div>
-  </div>
-</section>
+      <HeroSection />
 
       <section className='services-section'>
         <div className='container'>
@@ -440,13 +473,13 @@ const Home = () => {
             <div className='services-list-alt'>
               {services.map((service, index) => (
                 <div className='service-tile' key={index}>
-                  <div className='service-icon-large service-icon-circle'>{service.icon}</div>
+                  <div className='service-icon-large service-icon-circle logo-shadow'>{service.icon}</div>
                   <div className='service-info'>
                     <h3 className='service-title-alt'>{service.title}</h3>
                     <p className='service-desc-alt'>{service.description}</p>
                     <div className='service-actions'>
-                      <Link to={`/services#${service.title.replace(/\s+/g, '-').toLowerCase()}`} className='service-action-link yellow-btn'>View Details</Link>
-                      <Link to='/#booking-section' className='service-action-link yellow-btn'>Book Now</Link>
+                      <Link to={`/services#${service.title.replace(/\s+/g, '-').toLowerCase()}`} className='service-action-link yellow-btn service-btn'>View Details</Link>
+                      <Link to='/#booking-section' className='service-action-link yellow-btn service-btn'>Book Now</Link>
                     </div>
                   </div>
                 </div>
@@ -459,23 +492,23 @@ const Home = () => {
 
       <section className='about-section'>
         <div className='container'>
-          <div className='about-content-alt'>
+          <div className='about-content-alt simple-about-layout'>
             <div className='about-image-alt'>
-              <img src={photographer1} alt="Lead Photographer" className='about-main-img'/>
+              <img src={photographer1} alt="Lead Photographer" className='about-main-img highlight-border'/>
               <div className='about-img-overlay'></div>
             </div>
             <div className='about-text-alt'>
-              <h2 className='about-title-alt'>Why Choose <span>NR PHOTOGRAPHY</span>?</h2>
+              <h2 className='about-title-alt'>Why Choose <span className='highlight-text'>NR PHOTOGRAPHY</span>?</h2>
               <ul className='about-features'>
-                <li><strong>10+ Years Experience:</strong> Trusted by hundreds of clients for weddings, portraits, and commercial shoots.</li>
-                <li><strong>Award-Winning Team:</strong> Our photographers are recognized nationally for creativity and professionalism.</li>
-                <li><strong>Cutting-Edge Equipment:</strong> We use the latest cameras and editing tools for stunning results.</li>
-                <li><strong>Personalized Service:</strong> Every session is tailored to your unique story and style.</li>
-                <li><strong>Fast Turnaround:</strong> Receive your edited photos quickly, without compromising on quality.</li>
+                <li><strong className='highlight-text'>10+ Years Experience:</strong> Trusted by hundreds of clients for weddings, portraits, and commercial shoots.</li>
+                <li><strong className='highlight-text'>Award-Winning Team:</strong> Our photographers are recognized nationally for creativity and professionalism.</li>
+                <li><strong className='highlight-text'>Cutting-Edge Equipment:</strong> We use the latest cameras and editing tools for stunning results.</li>
+                <li><strong className='highlight-text'>Personalized Service:</strong> Every session is tailored to your unique story and style.</li>
+                <li><strong className='highlight-text'>Fast Turnaround:</strong> Receive your edited photos quickly, without compromising on quality.</li>
               </ul>
               <div className='about-cta'>
-                <Link to='/portfolio' className='about-btn'>See Our Work</Link>
-                <Link to='/contact' className='about-btn secondary'>Contact Us</Link>
+                <Link to='/portfolio' className='about-btn highlight-btn'>See Our Work</Link>
+                <Link to='/contact' className='about-btn secondary highlight-btn'>Contact Us</Link>
               </div>
             </div>
           </div>
